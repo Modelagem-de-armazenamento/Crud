@@ -1,11 +1,11 @@
-const cliente = [];
+const buscas = [];
 let nextId = 1;
 
-const model = (cliente, id = nextId++) => {
-  if (cliente.nome != undefined && cliente.nome != "") {
+const model = (busca, id = nextId++) => {
+  if (busca.nome != undefined && busca.nome != "") {
     return {
       id,
-      nome: cliente.nome,
+      nome: busca.nome,
     };
   }
 };
@@ -14,23 +14,23 @@ const store = (body) => {
   const novo = model(body);
 
   if (novo) {
-    cliente.push(novo);
+    buscas.push(novo);
     return 201;
   }
 
   return 400;
 };
 
-const index = () => cliente;
+const index = () => buscas;
 
-const show = (id) => cliente.find((el) => el.id == id);
+const show = (id) => buscas.find((el) => el.id == id);
 
 const update = (id, body) => {
-  const index =cliente.findIndex((el) => el.id == id);
+  const index =buscas.findIndex((el) => el.id == id);
   const novo = model(body, parseInt(id));
 
   if (novo && index != -1) {
-    cliente[index] = novo;
+    buscas[index] = novo;
 
     return 200;
   }
@@ -39,10 +39,10 @@ const update = (id, body) => {
 };
 
 const destroy = (id) => {
-  const index = cliente.findIndex((el) => el.id == id);
+  const index = buscas.findIndex((el) => el.id == id);
 
   if (index != -1) {
-    cliente.splice(index, 1);
+    buscas.splice(index, 1);
   }
 };
 
