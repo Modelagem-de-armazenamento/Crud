@@ -7,10 +7,9 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-   "dev" : "nodemon src/controllers/index.js"
+    "dev": "nodemon src/index.js"
   },
   "keywords": [],
   "author": "",
