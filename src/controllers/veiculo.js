@@ -1,11 +1,11 @@
-const buscas = [];
+const veiculos = [];
 let nextId = 1;
 
-const model = (busca, id = nextId++) => {
-  if (busca.nome != undefined && busca.nome != "") {
+const model = (veiculo, id = nextId++) => {
+  if (veiculo.nome != undefined && veiculo.nome != "") {
     return {
       id,
-      nome: busca.nome,
+      nome: veiculo.nome,
     };
   }
 };
@@ -14,23 +14,23 @@ const store = (body) => {
   const novo = model(body);
 
   if (novo) {
-    buscas.push(novo);
+    veiculos.push(novo);
     return 201;
   }
 
   return 400;
 };
 
-const index = () => buscas;
+const index = () => veiculos;
 
-const show = (id) => buscas.find((el) => el.id == id);
+const show = (id) => veiculos.find((el) => el.id == id);
 
 const update = (id, body) => {
-  const index =buscas.findIndex((el) => el.id == id);
+  const index =veiculos.findIndex((el) => el.id == id);
   const novo = model(body, parseInt(id));
 
   if (novo && index != -1) {
-    buscas[index] = novo;
+    veiculos[index] = novo;
 
     return 200;
   }
@@ -39,10 +39,10 @@ const update = (id, body) => {
 };
 
 const destroy = (id) => {
-  const index = buscas.findIndex((el) => el.id == id);
+  const index = veiculos.findIndex((el) => el.id == id);
 
   if (index != -1) {
-    buscas.splice(index, 1);
+    veiculos.splice(index, 1);
   }
 };
 
